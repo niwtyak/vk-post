@@ -1,9 +1,9 @@
 object WallService {
     private var posts = emptyArray<Post>()
-    private var globalId = 1
+    private var globalId = 0
 
     fun add(post: Post): Post {
-        posts += post.copy(id = globalId++)
+        posts += post.copy(id = ++globalId)
         return posts.last()
     }
 
@@ -18,5 +18,12 @@ object WallService {
             }
         }
         return false
+    }
+
+    fun getGlobalId() = globalId
+
+    fun clear() {
+        posts = emptyArray()
+        globalId = 0
     }
 }

@@ -1,6 +1,6 @@
 package attachments
 
-sealed interface Attachment {
+interface Attachment {
     val type: String
     val content: Any
 }

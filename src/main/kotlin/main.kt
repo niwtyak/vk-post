@@ -1,6 +1,7 @@
 import additionalClasses.*
+import attachments.*
 
-fun main(){
+fun main() {
     val newPost =
         Post(
             0,
@@ -19,6 +20,13 @@ fun main(){
             Views(10),
             "post type",
             PostSource("vk", null, "likes", "url"),
+            arrayOf(
+                AudioAttachment(content = Audio(1, 1, "artist", "title", 10, "url", 1, 1, 1, 111020, null, false)),
+                VideoAttachment(content = Video(2, 1, "title", "text", 100, 111020, 300, "player", 1024, 1280, false)),
+                PhotoAttachment(content = Photo(3, 1, 1, 1, "text", 111020, 1024, 1280)),
+                StickerAttachment(content = Sticker(1, 4, "url", 123, 123, "animationUrl", true)),
+                FileAttachment(content = File(5, 1, "title", 123, "doc", "url", 111020, 0))
+            ),
             Geo("sity", "123.123.213", Place()),
             1,
             null,

@@ -1,4 +1,5 @@
 import additionalClasses.*
+import attachments.*
 
 data class Post(
     val id: Int,
@@ -17,6 +18,7 @@ data class Post(
     val views: Views,
     val postType: String,
     val postSource: PostSource?,
+    val attachments: Array<Attachment>?,
     val geo: Geo,
     val signerId: Int? ,
     val copyHistory: Array<Post>?,

@@ -33,11 +33,11 @@ object WallService {
 
     class PostNotFoundException(override val message: String?) : RuntimeException(message)
 
-    fun createComment(comment: WallComment) {
+    fun createComment(comment: WallComment):Boolean {
         for (post in posts) {
             if (post.id == comment.postId) {
                 comments += comment
-                return
+                return true
             }
         }
         throw PostNotFoundException("Post not found")

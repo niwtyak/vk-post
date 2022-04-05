@@ -2,6 +2,7 @@ import additionalClasses.*
 import attachments.*
 import org.junit.Assert
 import org.junit.Test
+import java.lang.RuntimeException
 
 class MainKtTest {
 
@@ -39,7 +40,7 @@ class MainKtTest {
             isPinned = false,
             markedAsAds = false,
             isFavorite = false,
-             Donut(false, 0, Placeholder(), true, "edit mode"),
+            Donut(false, 0, Placeholder(), true, "edit mode"),
             0
         )
 
@@ -65,6 +66,18 @@ class MainKtTest {
     fun updateNotExistingPost() {
         WallService.add(newPost)
         Assert.assertFalse(WallService.update(newPost.copy(id = 0, text = "updated text")))
+    }
+
+    @Test()
+    fun createCommentToExistingPost() {
+        WallService.add(newPost)
+        Assert.assertTrue(WallService.createComment(WallComment(1, 1, 1, "comment", null)))
+    }
+
+    @Test(expected = WallService.PostNotFoundException::class)
+    fun createCommentToNotExistingPost() {
+        WallService.add(newPost)
+        WallService.createComment(WallComment(1, 1, 2, "comment", null))
     }
 
 }

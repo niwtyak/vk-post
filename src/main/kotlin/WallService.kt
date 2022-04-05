@@ -1,6 +1,10 @@
+
+import additionalClasses.WallComment
+
 object WallService {
-    private var posts = emptyArray<Post>()
     private var globalId = 0
+    private var posts = emptyArray<Post>()
+    private var comments = emptyArray<WallComment>()
 
     fun add(post: Post): Post {
         posts += post.copy(id = ++globalId)
@@ -25,5 +29,17 @@ object WallService {
     fun clear() {
         posts = emptyArray()
         globalId = 0
+    }
+
+    class PostNotFoundException(override val message: String?) : RuntimeException(message)
+
+    fun createComment(comment: WallComment):Boolean {
+        for (post in posts) {
+            if (post.id == comment.postId) {
+                comments += comment
+                return true
+            }
+        }
+        throw PostNotFoundException("Post not found")
     }
 }

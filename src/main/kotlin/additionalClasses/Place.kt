@@ -1,0 +1,5 @@
+package additionalClasses
+
+class Place {
+
+}

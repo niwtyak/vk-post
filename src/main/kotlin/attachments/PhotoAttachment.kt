@@ -1,7 +1,3 @@
 package attachments
 
-data class PhotoAttachment(
-    override val content: Photo
-) : Attachment{
-    override val type: String = "Photo"
-}
+data class PhotoAttachment(override val type: String = "photo", val photo: Photo) : Attachment

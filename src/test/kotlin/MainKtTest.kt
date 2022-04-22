@@ -1,4 +1,5 @@
 import additionalClasses.*
+import attachments.*
 import org.junit.Assert
 import org.junit.Test
 
@@ -15,20 +16,30 @@ class MainKtTest {
             0,
             0,
             false,
-            Comment(0, true, true, true, true),
+            Comment(0, canPost = true, groupsCanPost = true, canClose = true, canOpen = true),
             Copyright(1, "link", "name", "type"),
-            Likes(3, true, true, true),
+            Likes(3, userLikes = true, canLike = true, canPublish = true),
             Reposts(0, false),
             Views(10),
             "post type",
+            PostSource("vk", null, "likes", "url"),
+            arrayOf(
+                AudioAttachment(audio = Audio(1, 1, "artist", "title", 10, "url", 1, 1, 1, 111020, null, false)),
+                VideoAttachment(video = Video(2, 1, "title", "text", 100, 111020, 300, "player", 1024, 1280, false)),
+                PhotoAttachment(photo = Photo(3, 1, 1, 1, "text", 111020, 1024, 1280)),
+                StickerAttachment(sticker = Sticker(1, 4, "url", 123, 123, "animationUrl", true)),
+                FileAttachment(file = File(5, 1, "title", 123, "doc", "url", 111020, 0))
+            ),
+            Geo("sity", "123.123.213", Place()),
             1,
-            true,
-            true,
-            true,
-            false,
-            false,
-            false,
-            Donut(false, 0, Placeholder(), true, "edit mode"),
+            null,
+            canPin = true,
+            canDelete = true,
+            canEdit = true,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = false,
+             Donut(false, 0, Placeholder(), true, "edit mode"),
             0
         )
 
